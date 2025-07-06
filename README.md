@@ -61,3 +61,148 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 - [Express.js Documentation](https://expressjs.com/)
 - [RESTful API Design Best Practices](https://restfulapi.net/)
 - [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) 
+
+
+
+
+
+
+
+# 📦 Week 2 Express.js Assignment – PLP
+
+This project is a simple Express.js RESTful API for managing products. It includes full CRUD operations, middleware (logging, authentication, validation), and advanced features like filtering, pagination, and search.
+
+---
+
+## 🚀 Features
+
+- ✅ Create, Read, Update, Delete products
+- ✅ Middleware:
+  - Logging requests
+  - API key authentication
+  - Data validation
+- ✅ Error handling with custom error classes
+- ✅ Advanced features:
+  - Filtering by category
+  - Pagination
+  - Search by name
+  - Product statistics (count by category)
+
+---
+
+## 📦 API Endpoints
+
+All `/api/products` routes are protected and require the `x-api-key` header.
+
+| Method | Endpoint                        | Description                          |
+|--------|----------------------------------|--------------------------------------|
+| GET    | `/api/products`                 | Get all products (with optional `?category`, `?page`, `?limit`) |
+| GET    | `/api/products/:id`             | Get a specific product by ID         |
+| POST   | `/api/products`                 | Create a new product                 |
+| PUT    | `/api/products/:id`             | Update an existing product           |
+| DELETE | `/api/products/:id`             | Delete a product                     |
+| GET    | `/api/products/search?name=xyz` | Search products by name              |
+| GET    | `/api/products/stats`           | Get product count per category       |
+
+---
+
+## 🧾 Example Request Body (POST/PUT)
+
+```json
+{
+  "name": "Laptop",
+  "description": "Powerful gaming laptop",
+  "price": 1200,
+  "category": "Electronics",
+  "inStock": true
+}
+🔐 Authentication
+All protected routes require an API key to be sent in the headers:
+
+makefile
+Copy
+Edit
+x-api-key: your_api_key
+You can set your actual API key in the .env file.
+
+▶️ How to Run Locally
+1. Clone the repo
+bash
+Copy
+Edit
+git clone https://github.com/PLP-MERN-Stack-Development/week-2-express-js-assignment-Butichiivy.git
+cd week-2-express-js-assignment-Butichiivy
+2. Install dependencies
+bash
+Copy
+Edit
+npm install
+3. Create .env file
+Make a .env file in the root with the following:
+
+ini
+Copy
+Edit
+PORT=3000
+API_KEY=test12345
+Or use the provided .env.example.
+
+4. Start the server
+bash
+Copy
+Edit
+npm start
+Server will run at:
+http://localhost:3000
+
+🧪 Testing the API
+Use Postman, Insomnia, or curl to test endpoints.
+
+Example request:
+POST /api/products
+
+Headers:
+
+Content-Type: application/json
+
+x-api-key: test12345
+
+Body:
+
+json
+Copy
+Edit
+{
+  "name": "Smartphone",
+  "description": "Latest model",
+  "price": 799,
+  "category": "Electronics",
+  "inStock": true
+}
+📁 Project Structure
+pgsql
+Copy
+Edit
+├── middleware/
+│   ├── logger.js
+│   ├── auth.js
+│   └── validation.js
+├── routes/
+│   └── products.js
+├── utils/
+│   └── errors.js
+├── .env.example
+├── server.js
+├── package.json
+└── README.md
+✅ Submission
+Make sure you:
+
+ Push all your code to your GitHub Classroom repo
+
+ Include .env.example
+
+ Include a complete README.md
+
+ Ensure your API works in Postman or curl
+
